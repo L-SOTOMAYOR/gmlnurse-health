@@ -1,12 +1,10 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
 
-const apiKey = process.env.API_KEY || "";
-const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const getHealthAdvice = async (userQuery: string) => {
   try {
-    if (!ai) return "El servicio de consulta IA no está disponible en este momento. Por favor, comunícate directamente con nosotros al 939-254-2268.";
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: userQuery,
@@ -29,7 +27,6 @@ export const getHealthAdvice = async (userQuery: string) => {
 
 export const getSymptomServiceSuggestion = async (symptoms: string) => {
   try {
-    if (!ai) return null;
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: `Analiza estos síntomas y sugiere cuál de nuestros servicios de GML Nurse Infusion podría ser más útil: ${symptoms}`,

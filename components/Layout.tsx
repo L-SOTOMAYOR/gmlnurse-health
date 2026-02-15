@@ -1,6 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
+// Added Heart to imports
 import { Menu, X, Phone, Instagram, Facebook, MessageCircle, Heart } from 'lucide-react';
-import { CONTACT_INFO } from '../constants';
+import { CONTACT_INFO, COLORS } from '../constants';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -11,22 +13,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-      
-      const reveals = document.querySelectorAll(".reveal");
-      reveals.forEach(reveal => {
-        const windowHeight = window.innerHeight;
-        const elementTop = reveal.getBoundingClientRect().top;
-        const elementVisible = 150;
-        if (elementTop < windowHeight - elementVisible) {
-          reveal.classList.add("active");
-        }
-      });
-    };
-    
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
-    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -39,6 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Navbar */}
       <header 
         className={`fixed w-full z-50 transition-all duration-300 ${
           scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'
@@ -63,13 +52,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </div>
             </a>
 
+            {/* Desktop Nav */}
             <nav className="hidden md:flex space-x-8">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   className={`font-medium transition-colors hover:text-emerald-500 ${
-                    scrolled ? 'text-slate-700' : 'text-slate-700 md:text-white text-shadow-sm'
+                    scrolled ? 'text-slate-700' : 'text-slate-700 md:text-white'
                   }`}
                 >
                   {link.name}
@@ -88,18 +78,19 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </a>
             </div>
 
+            {/* Mobile menu button */}
             <button 
-              className={`md:hidden p-2 transition-colors ${scrolled ? 'text-slate-900' : 'text-slate-900 md:text-white'}`}
+              className="md:hidden p-2 text-slate-900"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle Menu"
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
 
+        {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-xl animate-in slide-in-from-top duration-300 border-t">
+          <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-xl animate-fade-in-down border-t">
             <div className="px-4 py-6 space-y-4">
               {navLinks.map((link) => (
                 <a
@@ -111,23 +102,23 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   {link.name}
                 </a>
               ))}
-              <div className="pt-4 space-y-3">
-                 <a 
-                  href={CONTACT_INFO.whatsapp}
-                  className="block w-full text-center bg-emerald-500 text-white py-3 rounded-lg font-bold"
-                >
-                  Agendar Cita
-                </a>
-              </div>
+              <a 
+                href={CONTACT_INFO.whatsapp}
+                className="block w-full text-center bg-emerald-500 text-white py-3 rounded-lg font-bold"
+              >
+                Cita WhatsApp
+              </a>
             </div>
           </div>
         )}
       </header>
 
+      {/* Main Content */}
       <main className="flex-grow">
         {children}
       </main>
 
+      {/* Footer */}
       <footer className="bg-slate-900 text-white pt-16 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
@@ -140,13 +131,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 Expertos en cuidados de enfermería avanzada e infusiones para tu bienestar óptimo en la comodidad de tu espacio.
               </p>
               <div className="flex space-x-4">
-                <a href={CONTACT_INFO.facebook} target="_blank" className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
+                <a href={CONTACT_INFO.facebook} className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
                   <Facebook size={20} />
                 </a>
-                <a href={CONTACT_INFO.instagram} target="_blank" className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
+                <a href={CONTACT_INFO.instagram} className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
                   <Instagram size={20} />
                 </a>
-                <a href={CONTACT_INFO.whatsappChannel} target="_blank" className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
+                <a href={CONTACT_INFO.whatsapp} className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
                   <MessageCircle size={20} />
                 </a>
               </div>
@@ -154,22 +145,21 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             <div>
               <h3 className="text-lg font-bold mb-6 text-emerald-500">Servicios</h3>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 <li><a href="#/servicios" className="text-slate-400 hover:text-white transition-colors">Sueroterapias</a></li>
                 <li><a href="#/servicios" className="text-slate-400 hover:text-white transition-colors">Control de Peso</a></li>
-                <li><a href="#/servicios" className="text-slate-400 hover:text-white transition-colors">Nano Mesoterapia</a></li>
-                <li><a href="#/servicios" className="text-slate-400 hover:text-white transition-colors">Masajes Linfáticos</a></li>
-                <li><a href="#/servicios" className="text-slate-400 hover:text-white transition-colors">Escleroterapia</a></li>
-                <li><a href="#/servicios" className="text-slate-400 hover:text-white transition-colors">Cuidado de Heridas</a></li>
+                <li><a href="#/servicios" className="text-slate-400 hover:text-white transition-colors">Mesoterapia</a></li>
+                <li><a href="#/servicios" className="text-slate-400 hover:text-white transition-colors">Postoperatorio</a></li>
               </ul>
             </div>
 
             <div>
               <h3 className="text-lg font-bold mb-6 text-emerald-500">Compañía</h3>
               <ul className="space-y-4">
-                <li><a href="#/sobre-nosotros" className="text-slate-400 hover:text-white transition-colors">Sobre Nosotros</a></li>
+                <li><a href="#/sobre-nosotros" className="text-slate-400 hover:text-white transition-colors">Misión y Visión</a></li>
+                <li><a href="#/sobre-nosotros" className="text-slate-400 hover:text-white transition-colors">Valores</a></li>
                 <li><a href="#/contacto" className="text-slate-400 hover:text-white transition-colors">Contacto</a></li>
-                <li><a href="#/servicios" className="text-slate-400 hover:text-white transition-colors">Todos los Servicios</a></li>
+                <li><a href="#/contacto" className="text-slate-400 hover:text-white transition-colors">Preguntas Frecuentes</a></li>
               </ul>
             </div>
 
@@ -184,8 +174,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   </div>
                 </div>
                 <div className="flex items-start space-x-3 text-slate-400">
-                   <div className="w-5 h-5 bg-emerald-500/20 flex items-center justify-center rounded text-emerald-500 text-xs font-bold shrink-0">@</div>
-                   <p className="break-all">{CONTACT_INFO.email}</p>
+                   <div className="w-5 h-5 bg-emerald-500/20 flex items-center justify-center rounded text-emerald-500 text-xs font-bold">W</div>
+                   <p>Servicio a domicilio y en oficina</p>
                 </div>
               </div>
             </div>
@@ -193,28 +183,21 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
           <div className="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
             <p>&copy; {new Date().getFullYear()} GML Nurse Infusion. Todos los derechos reservados.</p>
+            <p className="mt-2 text-slate-600">gmlnurse.health</p>
           </div>
         </div>
 
-        {/* Floating WhatsApp Button - Direct Link with Pulse Animation */}
+        {/* Floating WhatsApp */}
         <a 
           href={CONTACT_INFO.whatsapp}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="fixed bottom-6 right-6 bg-emerald-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all z-40 group flex items-center justify-center animate-whatsapp"
+          className="fixed bottom-6 right-6 bg-emerald-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all z-40 group"
         >
-          <MessageCircle size={32} className="relative z-10" />
-          <span className="absolute right-full mr-3 bg-white text-slate-900 px-3 py-1 rounded shadow-lg text-sm font-bold opacity-0 group-hover:opacity-100 whitespace-nowrap transition-opacity pointer-events-none">
-            ¡Escríbenos por WhatsApp!
+          <MessageCircle size={28} />
+          <span className="absolute right-full mr-3 bg-white text-slate-900 px-3 py-1 rounded shadow-lg text-sm font-bold opacity-0 group-hover:opacity-100 whitespace-nowrap transition-opacity">
+            ¡Chatea con nosotros!
           </span>
         </a>
       </footer>
-      
-      <style>{`
-        .text-shadow-sm {
-          text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-        }
-      `}</style>
     </div>
   );
 };
