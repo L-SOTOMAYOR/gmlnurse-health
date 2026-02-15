@@ -1,0 +1,8 @@
+{
+  "name": "GML Nurse Infusion",
+  "description": "Professional medical infusion and wellness services website for GML Nurse Infusion, featuring IV therapy, weight management, and post-operative care.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
