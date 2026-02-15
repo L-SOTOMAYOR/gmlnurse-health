@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import AIConsultant from './components/AIConsultant';
 
 const App: React.FC = () => {
   const [currentHash, setCurrentHash] = useState(window.location.hash || '#/');
@@ -37,7 +36,6 @@ const App: React.FC = () => {
   return (
     <Layout>
       {renderContent()}
-      <AIConsultant />
     </Layout>
   );
 };
