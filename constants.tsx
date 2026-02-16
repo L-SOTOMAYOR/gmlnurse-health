@@ -42,7 +42,7 @@ export const SERVICES: Service[] = [
     title: 'Nano Mesoterapia',
     description: 'Tratamiento avanzado de rejuvenecimiento cutáneo que nutre la piel desde las capas más profundas sin necesidad de agujas invasivas.',
     icon: 'Sparkles',
-    imageUrl: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc206e?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800',
     features: [
       'Sin agujas — tecnología nano',
       'Rejuvenecimiento y luminosidad',
@@ -55,7 +55,7 @@ export const SERVICES: Service[] = [
     title: 'Masajes Linfáticos',
     description: 'Técnicas especializadas para reducir inflamación, mejorar la circulación y acelerar la recuperación postoperatoria.',
     icon: 'Zap',
-    imageUrl: 'https://images.unsplash.com/photo-1544161515-4af6b1d462c2?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=800',
     features: [
       'Reduce retención de líquidos',
       'Acelera recuperación postquirúrgica',
@@ -81,7 +81,7 @@ export const SERVICES: Service[] = [
     title: 'Cuidado de Heridas Postoperatorias',
     description: 'Atención especializada de enfermería para asegurar una cicatrización adecuada y prevenir infecciones tras cualquier cirugía.',
     icon: 'UserPlus',
-    imageUrl: 'https://images.unsplash.com/photo-1584432851739-6886e6f5a3d7?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1576671414201-7da744b3bab7?auto=format&fit=crop&q=80&w=800',
     features: [
       'Curación y cambio de vendajes',
       'Prevención de infecciones',
