@@ -50,7 +50,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* Navbar */}
       <header
         className={`fixed w-full z-50 transition-all duration-300 ${
-          scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'
+          scrolled ? 'bg-white shadow-md py-3' : 'bg-white/80 backdrop-blur-sm py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,10 +62,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 className="h-11 w-11 rounded-full object-cover transform group-hover:scale-110 transition-transform shadow-md"
               />
               <div className="flex flex-col">
-                <span className={`font-bold text-xl tracking-tight leading-none ${scrolled ? 'text-slate-900' : 'text-slate-900 md:text-white'}`}>
+                <span className="font-bold text-xl tracking-tight leading-none text-slate-900">
                   GML Nurse
                 </span>
-                <span className={`text-xs font-medium ${scrolled ? 'text-emerald-600' : 'text-emerald-600 md:text-emerald-300'}`}>
+                <span className="text-xs font-medium text-emerald-600">
                   Infusion
                 </span>
               </div>
@@ -80,7 +80,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   className={`font-medium transition-colors hover:text-emerald-500 ${
                     isActive(link.href)
                       ? 'text-emerald-500 border-b-2 border-emerald-500 pb-1'
-                      : scrolled ? 'text-slate-700' : 'text-slate-700 md:text-white'
+                      : 'text-slate-700'
                   }`}
                 >
                   {link.name}
