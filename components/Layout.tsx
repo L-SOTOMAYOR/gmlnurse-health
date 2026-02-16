@@ -35,13 +35,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
-            <a href="#/" className="flex items-center space-x-2 group">
-              <div className="relative">
-                <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform">
-                  <Heart className="text-white w-6 h-6" fill="currentColor" />
-                </div>
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full"></div>
-              </div>
+            <a href="#/" className="flex items-center space-x-3 group">
+              <img
+                src="https://i.imgur.com/sNQdvZM.jpeg"
+                alt="GML Nurse Infusion"
+                className="h-11 w-11 rounded-full object-cover transform group-hover:scale-110 transition-transform shadow-md"
+              />
               <div className="flex flex-col">
                 <span className={`font-bold text-xl tracking-tight leading-none ${scrolled ? 'text-slate-900' : 'text-slate-900 md:text-white'}`}>
                   GML Nurse
@@ -123,8 +122,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-1 md:col-span-1">
-              <div className="flex items-center space-x-2 mb-6">
-                <Heart className="text-emerald-500 w-8 h-8" fill="currentColor" />
+              <div className="flex items-center space-x-3 mb-6">
+                <img
+                  src="https://i.imgur.com/sNQdvZM.jpeg"
+                  alt="GML Nurse Infusion"
+                  className="h-10 w-10 rounded-full object-cover"
+                />
                 <span className="font-bold text-2xl">GML Nurse</span>
               </div>
               <p className="text-slate-400 mb-6 leading-relaxed">
