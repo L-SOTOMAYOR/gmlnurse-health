@@ -93,7 +93,7 @@ const Home: React.FC = () => {
                 className="group relative bg-slate-50 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 border border-slate-100"
               >
                 <div className="h-48 overflow-hidden">
-                   <img src={service.imageUrl} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={service.title} />
+                   <img src={service.imageUrl} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={service.title} />
                 </div>
                 <div className="p-8">
                   <div className="w-14 h-14 bg-emerald-600 rounded-xl flex items-center justify-center text-white mb-6 transform -mt-16 relative z-10 shadow-lg group-hover:rotate-12 transition-transform">

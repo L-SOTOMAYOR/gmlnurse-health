@@ -1,8 +1,7 @@
 
 import React from 'react';
 import { SERVICES, getIcon } from '../constants';
-// Added Shield, Award, Activity, Clock to imports
-import { CheckCircle, Shield, Award, Activity, Clock } from 'lucide-react';
+import { CheckCircle, Shield, Award, Activity, Clock, MapPin, Stethoscope } from 'lucide-react';
 
 const Services: React.FC = () => {
   return (
@@ -22,9 +21,10 @@ const Services: React.FC = () => {
                 <div className="w-full md:w-1/2">
                   <div className="relative">
                     <div className="absolute -inset-4 bg-emerald-500/10 rounded-2xl transform rotate-3 z-0"></div>
-                    <img 
-                      src={service.imageUrl} 
-                      alt={service.title} 
+                    <img
+                      src={service.imageUrl}
+                      alt={service.title}
+                      loading="lazy"
                       className="relative z-10 w-full h-[400px] object-cover rounded-2xl shadow-2xl"
                     />
                   </div>
@@ -39,25 +39,16 @@ const Services: React.FC = () => {
                   <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                     {service.description}
                   </p>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-                    <li className="flex items-center space-x-2 text-slate-700">
-                      <CheckCircle className="text-emerald-500 w-5 h-5" />
-                      <span>Tratamiento personalizado</span>
-                    </li>
-                    <li className="flex items-center space-x-2 text-slate-700">
-                      <CheckCircle className="text-emerald-500 w-5 h-5" />
-                      <span>Profesionales graduados</span>
-                    </li>
-                    <li className="flex items-center space-x-2 text-slate-700">
-                      <CheckCircle className="text-emerald-500 w-5 h-5" />
-                      <span>Seguridad clínica</span>
-                    </li>
-                    <li className="flex items-center space-x-2 text-slate-700">
-                      <CheckCircle className="text-emerald-500 w-5 h-5" />
-                      <span>Resultados visibles</span>
-                    </li>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                    {service.features.map((feature, i) => (
+                      <li key={i} className="flex items-start space-x-2 text-slate-700">
+                        <CheckCircle className="text-emerald-500 w-5 h-5 mt-0.5 shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
                   </ul>
-                  <a 
+                  <p className="text-sm text-slate-500 mb-8 italic">Consulte para precios y disponibilidad</p>
+                  <a
                     href={`https://wa.me/19392542268?text=Hola,%20me%20interesa%20información%20sobre%20${encodeURIComponent(service.title)}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -75,23 +66,26 @@ const Services: React.FC = () => {
       {/* Trust Badges */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-             {/* Simple symbolic icons representing trust */}
-             <div className="flex flex-col items-center">
-               <Shield className="w-12 h-12 mb-2 text-emerald-600" />
-               <span className="font-bold">100% Seguro</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+             <div className="flex flex-col items-center p-6 rounded-2xl hover:bg-emerald-50 transition-colors">
+               <Stethoscope className="w-12 h-12 mb-3 text-emerald-600" />
+               <span className="font-bold text-slate-900">Enfermera Graduada</span>
+               <span className="text-sm text-slate-500 mt-1">Personal certificado</span>
              </div>
-             <div className="flex flex-col items-center">
-               <Award className="w-12 h-12 mb-2 text-emerald-600" />
-               <span className="font-bold">Alta Calidad</span>
+             <div className="flex flex-col items-center p-6 rounded-2xl hover:bg-emerald-50 transition-colors">
+               <MapPin className="w-12 h-12 mb-3 text-emerald-600" />
+               <span className="font-bold text-slate-900">Servicio a Domicilio</span>
+               <span className="text-sm text-slate-500 mt-1">Todo Puerto Rico</span>
              </div>
-             <div className="flex flex-col items-center">
-               <Activity className="w-12 h-12 mb-2 text-emerald-600" />
-               <span className="font-bold">Personal Certificado</span>
+             <div className="flex flex-col items-center p-6 rounded-2xl hover:bg-emerald-50 transition-colors">
+               <Shield className="w-12 h-12 mb-3 text-emerald-600" />
+               <span className="font-bold text-slate-900">Protocolos Estériles</span>
+               <span className="text-sm text-slate-500 mt-1">Seguridad clínica</span>
              </div>
-             <div className="flex flex-col items-center">
-               <Clock className="w-12 h-12 mb-2 text-emerald-600" />
-               <span className="font-bold">Respuesta Rápida</span>
+             <div className="flex flex-col items-center p-6 rounded-2xl hover:bg-emerald-50 transition-colors">
+               <Clock className="w-12 h-12 mb-3 text-emerald-600" />
+               <span className="font-bold text-slate-900">Horario Flexible</span>
+               <span className="text-sm text-slate-500 mt-1">Lunes a Sábado</span>
              </div>
           </div>
         </div>

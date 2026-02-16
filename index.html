@@ -3,34 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10b981">
+    <meta name="description" content="GML Nurse Infusion - Servicios profesionales de enfermería a domicilio en Puerto Rico. Sueroterapias, control de peso, mesoterapia, masajes linfáticos y más. Llama al 939-254-2268.">
+    <meta property="og:title" content="GML Nurse Infusion | Enfermería a Domicilio en Puerto Rico">
+    <meta property="og:description" content="Servicios profesionales de enfermería a domicilio. Sueroterapias, control de peso, mesoterapia y más.">
+    <meta property="og:image" content="https://i.imgur.com/sNQdvZM.jpeg">
+    <meta property="og:url" content="https://gmlnurse.health">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_PR">
     <title>GML Nurse Infusion | Enfermería a Domicilio en Puerto Rico</title>
     <link rel="icon" href="https://i.imgur.com/sNQdvZM.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-        }
-        .reveal {
-          opacity: 0;
-          transform: translateY(20px);
-          transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
         @keyframes whatsapp-pulse {
           0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
           70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
           100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
-        .animate-whatsapp {
-          animation: whatsapp-pulse 2s infinite;
-        }
+        .animate-whatsapp { animation: whatsapp-pulse 2s infinite; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 0.6s ease-out; }
+        .animate-fade-in-down { animation: fadeInDown 0.3s ease-out; }
+        .animate-fade-in-up { animation: fadeInUp 0.3s ease-out; }
     </style>
 </head>
 <body class="bg-white text-slate-900 overflow-x-hidden">

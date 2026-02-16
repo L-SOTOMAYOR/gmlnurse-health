@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-// Added Heart to imports
-import { Menu, X, Phone, Instagram, Facebook, MessageCircle, Heart } from 'lucide-react';
+import { Menu, X, Phone, Instagram, Facebook, MessageCircle, ChevronUp } from 'lucide-react';
 import { CONTACT_INFO, COLORS } from '../constants';
 
 interface LayoutProps {
@@ -11,12 +10,28 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [currentPath, setCurrentPath] = useState(window.location.hash || '#/');
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleHash = () => setCurrentPath(window.location.hash || '#/');
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('hashchange', handleHash);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('hashchange', handleHash);
+    };
   }, []);
+
+  const isActive = (href: string) => {
+    const base = currentPath.split('/').slice(0, 2).join('/');
+    const hrefBase = href.split('/').slice(0, 2).join('/');
+    if (href === '#/' && (base === '#/' || base === '#')) return true;
+    if (href !== '#/' && hrefBase === base) return true;
+    return false;
+  };
+
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const navLinks = [
     { name: 'Inicio', href: '#/' },
@@ -27,8 +42,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Skip to Content */}
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-emerald-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold">
+        Saltar al contenido
+      </a>
+
       {/* Navbar */}
-      <header 
+      <header
         className={`fixed w-full z-50 transition-all duration-300 ${
           scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'
         }`}
@@ -58,7 +78,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   key={link.name}
                   href={link.href}
                   className={`font-medium transition-colors hover:text-emerald-500 ${
-                    scrolled ? 'text-slate-700' : 'text-slate-700 md:text-white'
+                    isActive(link.href)
+                      ? 'text-emerald-500 border-b-2 border-emerald-500 pb-1'
+                      : scrolled ? 'text-slate-700' : 'text-slate-700 md:text-white'
                   }`}
                 >
                   {link.name}
@@ -78,9 +100,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
 
             {/* Mobile menu button */}
-            <button 
+            <button
               className="md:hidden p-2 text-slate-900"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Abrir menú de navegación"
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -95,13 +118,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="block text-lg font-semibold text-slate-700 hover:text-emerald-500"
+                  className={`block text-lg font-semibold hover:text-emerald-500 ${
+                    isActive(link.href) ? 'text-emerald-600' : 'text-slate-700'
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.name}
                 </a>
               ))}
-              <a 
+              <a
                 href={CONTACT_INFO.whatsapp}
                 className="block w-full text-center bg-emerald-500 text-white py-3 rounded-lg font-bold"
               >
@@ -113,7 +138,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow">
+      <main id="main-content" className="flex-grow">
         {children}
       </main>
 
@@ -134,13 +159,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 Expertos en cuidados de enfermería avanzada e infusiones para tu bienestar óptimo en la comodidad de tu espacio.
               </p>
               <div className="flex space-x-4">
-                <a href={CONTACT_INFO.facebook} target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
+                <a href={CONTACT_INFO.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
                   <Facebook size={20} />
                 </a>
-                <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
+                <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
                   <Instagram size={20} />
                 </a>
-                <a href={CONTACT_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
+                <a href={CONTACT_INFO.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
                   <MessageCircle size={20} />
                 </a>
               </div>
@@ -172,13 +197,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <div className="flex items-start space-x-3 text-slate-400">
                   <Phone size={18} className="text-emerald-500 mt-1 shrink-0" />
                   <div>
-                    <a href="tel:+19392542268" className="block hover:text-white transition-colors">939-254-2268</a>
-                    <a href="tel:+12142444685" className="block hover:text-white transition-colors">214-244-4685</a>
+                    <a href="tel:+19392542268" className="block hover:text-white transition-colors">PR: 939-254-2268</a>
+                    <a href="tel:+12142444685" className="block hover:text-white transition-colors">US: 214-244-4685</a>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3 text-slate-400">
                    <div className="w-5 h-5 bg-emerald-500/20 flex items-center justify-center rounded text-emerald-500 text-xs font-bold">W</div>
                    <p>Servicio a domicilio y en oficina</p>
+                </div>
+                <div className="flex items-start space-x-3 text-slate-400">
+                   <div className="w-5 h-5 bg-emerald-500/20 flex items-center justify-center rounded text-emerald-500 text-xs font-bold">H</div>
+                   <p>{CONTACT_INFO.businessHours}</p>
                 </div>
               </div>
             </div>
@@ -186,13 +215,25 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
           <div className="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
             <p>&copy; {new Date().getFullYear()} GML Nurse Infusion. Todos los derechos reservados.</p>
-            <p className="mt-2 text-slate-600">gmlnurse.health</p>
+            <p className="mt-2 text-slate-600">gmlnurse.health &bull; Política de Privacidad &bull; Términos de Uso</p>
           </div>
         </div>
 
+        {/* Back to Top */}
+        {scrolled && (
+          <button
+            onClick={scrollToTop}
+            aria-label="Volver arriba"
+            className="fixed bottom-6 left-6 bg-slate-800 text-white p-3 rounded-full shadow-xl hover:bg-emerald-500 transition-all z-40"
+          >
+            <ChevronUp size={24} />
+          </button>
+        )}
+
         {/* Floating WhatsApp */}
-        <a 
+        <a
           href={CONTACT_INFO.whatsapp}
+          aria-label="Contactar por WhatsApp"
           className="fixed bottom-6 right-6 bg-emerald-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all z-40 group"
         >
           <MessageCircle size={28} />
