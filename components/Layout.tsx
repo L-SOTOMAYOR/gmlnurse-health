@@ -67,8 +67,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </nav>
 
             <div className="hidden md:flex items-center space-x-4">
-              <a 
-                href={CONTACT_INFO.whatsapp}
+              <a
+                href={`${CONTACT_INFO.whatsapp}?text=Hola,%20me%20interesa%20información%20sobre%20sus%20servicios`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full font-semibold transition-all shadow-lg hover:shadow-emerald-200"
@@ -134,13 +134,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 Expertos en cuidados de enfermería avanzada e infusiones para tu bienestar óptimo en la comodidad de tu espacio.
               </p>
               <div className="flex space-x-4">
-                <a href={CONTACT_INFO.facebook} className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
+                <a href={CONTACT_INFO.facebook} target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
                   <Facebook size={20} />
                 </a>
-                <a href={CONTACT_INFO.instagram} className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
+                <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
                   <Instagram size={20} />
                 </a>
-                <a href={CONTACT_INFO.whatsapp} className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
+                <a href={CONTACT_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors">
                   <MessageCircle size={20} />
                 </a>
               </div>
@@ -149,10 +149,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <div>
               <h3 className="text-lg font-bold mb-6 text-emerald-500">Servicios</h3>
               <ul className="space-y-4">
-                <li><a href="#/servicios" className="text-slate-400 hover:text-white transition-colors">Sueroterapias</a></li>
-                <li><a href="#/servicios" className="text-slate-400 hover:text-white transition-colors">Control de Peso</a></li>
-                <li><a href="#/servicios" className="text-slate-400 hover:text-white transition-colors">Mesoterapia</a></li>
-                <li><a href="#/servicios" className="text-slate-400 hover:text-white transition-colors">Postoperatorio</a></li>
+                <li><a href="#/servicios/iv-therapy" className="text-slate-400 hover:text-white transition-colors">Sueroterapias</a></li>
+                <li><a href="#/servicios/weight-control" className="text-slate-400 hover:text-white transition-colors">Control de Peso</a></li>
+                <li><a href="#/servicios/mesotherapy" className="text-slate-400 hover:text-white transition-colors">Mesoterapia</a></li>
+                <li><a href="#/servicios/wound-care" className="text-slate-400 hover:text-white transition-colors">Postoperatorio</a></li>
               </ul>
             </div>
 
@@ -162,7 +162,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <li><a href="#/sobre-nosotros" className="text-slate-400 hover:text-white transition-colors">Misión y Visión</a></li>
                 <li><a href="#/sobre-nosotros" className="text-slate-400 hover:text-white transition-colors">Valores</a></li>
                 <li><a href="#/contacto" className="text-slate-400 hover:text-white transition-colors">Contacto</a></li>
-                <li><a href="#/contacto" className="text-slate-400 hover:text-white transition-colors">Preguntas Frecuentes</a></li>
+                <li><a href="#/contacto/faq" className="text-slate-400 hover:text-white transition-colors">Preguntas Frecuentes</a></li>
               </ul>
             </div>
 
@@ -172,8 +172,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <div className="flex items-start space-x-3 text-slate-400">
                   <Phone size={18} className="text-emerald-500 mt-1 shrink-0" />
                   <div>
-                    <p>939-254-2268</p>
-                    <p>214-244-4685</p>
+                    <a href="tel:+19392542268" className="block hover:text-white transition-colors">939-254-2268</a>
+                    <a href="tel:+12142444685" className="block hover:text-white transition-colors">214-244-4685</a>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3 text-slate-400">

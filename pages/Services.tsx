@@ -18,7 +18,7 @@ const Services: React.FC = () => {
 
           <div className="space-y-24">
             {SERVICES.map((service, index) => (
-              <div key={service.id} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 items-center`}>
+              <div key={service.id} id={service.id} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 items-center scroll-mt-28`}>
                 <div className="w-full md:w-1/2">
                   <div className="relative">
                     <div className="absolute -inset-4 bg-emerald-500/10 rounded-2xl transform rotate-3 z-0"></div>

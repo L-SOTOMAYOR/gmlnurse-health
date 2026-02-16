@@ -130,8 +130,8 @@ const Contact: React.FC = () => {
                     </div>
                     <div>
                       <p className="text-slate-400 text-sm font-bold uppercase tracking-wider mb-1">Teléfonos</p>
-                      <p className="text-xl font-bold">939-254-2268</p>
-                      <p className="text-xl font-bold">214-244-4685</p>
+                      <a href="tel:+19392542268" className="block text-xl font-bold hover:text-emerald-400 transition-colors">939-254-2268</a>
+                      <a href="tel:+12142444685" className="block text-xl font-bold hover:text-emerald-400 transition-colors">214-244-4685</a>
                     </div>
                   </div>
 
@@ -141,7 +141,7 @@ const Contact: React.FC = () => {
                     </div>
                     <div>
                       <p className="text-slate-400 text-sm font-bold uppercase tracking-wider mb-1">Email</p>
-                      <p className="text-xl font-bold">{CONTACT_INFO.email}</p>
+                      <a href={`mailto:${CONTACT_INFO.email}`} className="text-xl font-bold hover:text-emerald-400 transition-colors">{CONTACT_INFO.email}</a>
                     </div>
                   </div>
 
@@ -160,11 +160,11 @@ const Contact: React.FC = () => {
                 <div className="mt-12 pt-12 border-t border-slate-800">
                   <p className="text-slate-400 mb-6 font-bold uppercase tracking-wider">Síguenos</p>
                   <div className="flex space-x-6">
-                    <a href={CONTACT_INFO.facebook} className="flex items-center space-x-2 text-white hover:text-emerald-400 transition-colors">
+                    <a href={CONTACT_INFO.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-white hover:text-emerald-400 transition-colors">
                       <Facebook size={24} />
                       <span className="font-bold">Facebook</span>
                     </a>
-                    <a href={CONTACT_INFO.instagram} className="flex items-center space-x-2 text-white hover:text-emerald-400 transition-colors">
+                    <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-white hover:text-emerald-400 transition-colors">
                       <Instagram size={24} />
                       <span className="font-bold">Instagram</span>
                     </a>

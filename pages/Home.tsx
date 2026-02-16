@@ -98,7 +98,7 @@ const Home: React.FC = () => {
                   <p className="text-slate-600 mb-6 leading-relaxed">
                     {service.description}
                   </p>
-                  <a href="#/servicios" className="text-emerald-600 font-bold flex items-center hover:translate-x-2 transition-transform">
+                  <a href={`#/servicios/${service.id}`} className="text-emerald-600 font-bold flex items-center hover:translate-x-2 transition-transform">
                     Saber más <ChevronRight size={18} className="ml-1" />
                   </a>
                 </div>
@@ -137,7 +137,7 @@ const Home: React.FC = () => {
               </div>
               <div className="text-left">
                 <p className="text-sm opacity-80">Llámanos</p>
-                <p className="text-xl font-bold">939-254-2268</p>
+                <a href="tel:+19392542268" className="text-xl font-bold hover:underline">939-254-2268</a>
               </div>
             </div>
           </div>
