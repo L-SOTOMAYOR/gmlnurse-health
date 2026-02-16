@@ -20,6 +20,11 @@ const Home: React.FC = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
           <div className="max-w-2xl animate-fade-in">
+            <img
+              src="https://i.imgur.com/sNQdvZM.jpeg"
+              alt="GML Nurse Infusion"
+              className="h-20 w-20 rounded-full object-cover shadow-xl mb-6 border-2 border-white"
+            />
             <div className="inline-flex items-center space-x-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full mb-6 font-bold text-sm tracking-wide">
               <Shield size={16} />
               <span>CERTIFICADOS Y PROFESIONALES</span>

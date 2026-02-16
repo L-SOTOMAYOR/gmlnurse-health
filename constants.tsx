@@ -58,8 +58,8 @@ export const SERVICES: Service[] = [
 export const CONTACT_INFO = {
   phones: ['939-254-2268', '214-244-4685'],
   whatsapp: 'https://wa.me/19392542268',
-  facebook: 'https://facebook.com/gmlnurse',
-  instagram: 'https://instagram.com/gmlnurse',
+  facebook: 'https://www.facebook.com/gmlnurse',
+  instagram: 'https://www.instagram.com/gmlnurse',
   tagline: 'Deja tu salud en mano de profesionales',
   email: 'info@gmlnurse.health'
 };

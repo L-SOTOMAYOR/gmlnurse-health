@@ -10,6 +10,11 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
+              <img
+                src="https://i.imgur.com/sNQdvZM.jpeg"
+                alt="GML Nurse Infusion"
+                className="h-16 w-16 rounded-full object-cover shadow-lg mb-6"
+              />
               <h1 className="text-5xl font-bold text-slate-900 mb-8 leading-tight">Expertos en tu <span className="text-emerald-600">Bienestar</span></h1>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
                 GML Nurse Infusion nació con la visión de revolucionar el cuidado de la salud preventivo y postoperatorio. Entendemos que el bienestar comienza con la atención personalizada y el uso de las mejores prácticas clínicas.
@@ -77,6 +82,33 @@ const About: React.FC = () => {
                 <p className="text-slate-600">{value.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+      {/* CTA Section */}
+      <section className="py-20 bg-emerald-600 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/30 rounded-full blur-3xl -mr-32 -mt-32"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-700/30 rounded-full blur-3xl -ml-32 -mb-32"></div>
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Comienza Tu Camino Hacia el Bienestar</h2>
+          <p className="text-emerald-50 text-xl mb-10 leading-relaxed">
+            Nuestro equipo profesional está listo para ayudarte. Explora nuestros servicios o agenda tu cita hoy.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+            <a
+              href="#/servicios"
+              className="bg-white text-emerald-700 px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-2xl"
+            >
+              Ver Nuestros Servicios
+            </a>
+            <a
+              href="https://wa.me/19392542268?text=Hola,%20quiero%20agendar%20una%20cita"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-emerald-700 transition-all"
+            >
+              Agenda tu Cita por WhatsApp
+            </a>
           </div>
         </div>
       </section>
